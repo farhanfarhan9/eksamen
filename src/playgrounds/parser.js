@@ -1,4 +1,4 @@
-const babel = require("@babel/core");
+const babel = require('@babel/core');
 const parser = require('@babel/parser');
 const traverse = require('@babel/traverse').default;
 const fs = require('fs-extra');
