@@ -36,5 +36,6 @@ Di dalam folder ini masih ada folder-folder lain, deskripsinya sebagai berikut:
 | statics/ | berisikan file seperti gambar maupun file-file static lainnya termasuk template index.html aplikasi Vue |
 | store/ | berisikan store untuk Vuex |
 | styles/ | semua file css kita taruh disini termasuk entrypoint untuk memanggil tailwindcss |
-| App.vue | Vue component sebagai entry point render vue instance
+| App.vue | Vue component sebagai entry point render vue instance |
+| index.js | entrypoint untuk front-end dan vue instance |
 | routes.js | definisi routes untuk vue-router |

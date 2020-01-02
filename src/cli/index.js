@@ -1,7 +1,8 @@
+require('@babel/register');
+const chokidar = require('chokidar');
 const dotenv = require('dotenv');
-const express = require('express');
-// const { spawn } = require('child_process');
-// const path = require('path');
+const lodash = require('lodash');
+const path = require('path');
 const webpack = require('webpack');
 const webpackConfig = require('../../webpack.config');
 const WebpackDevServer = require('webpack-dev-server');
@@ -9,25 +10,30 @@ const WebpackDevServer = require('webpack-dev-server');
 // Initialize dotenv config
 dotenv.config();
 
+// Create own file watcher for api routes.
+chokidar.watch(path.resolve(__dirname, '../api/'), {
+  persistent: true,
+  ignoreInitial: true,
+}).on('all', lodash.debounce((event, path) => {
+  console.log("🤔  Detecting changes on API module ...");
+  const serverModule = Object.keys(require.cache).find(item => /api\/index/.test(item));
+  delete require.cache[serverModule];
+}, 1000));
+
 // Initialize compiler object for web app.
 const compiler = webpack(webpackConfig);
 // End of compiler object
 
-console.log(webpackConfig.output.path);
-
 // CLI for development purpose.
 console.log('🏁  CLI App Running at %s...');
-console.log('⚙️   Trying to compile webpack for app ...');
-
-const router = express.Router();
-router.get('/api/version', (req, res) => {
-  return res.json({version: '0.1.0'});
- });
+console.log('⚙️   Trying to wake up dev server ...');
 
 const server = new WebpackDevServer(compiler, {
   before: function(app, server, compiler) {
     // Middleware for api server. this is for development only.
-    app.use('/', router);
+    app.use('/api', function(req, res, next) {
+      require('../api/index').default(req, res, next);
+    });
   },
   contentBase: webpackConfig.output.path,
   historyApiFallback: true,
@@ -38,7 +44,6 @@ const server = new WebpackDevServer(compiler, {
     modules: false,
   }
 });
-console.log('⚙️   Trying to wake up the server ...');
 
 // Development server.
 server.listen(process.env.PORT, process.env.HOST, function () {

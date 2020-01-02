@@ -1,5 +1,6 @@
 const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const webpack = require('webpack');
 const webpackBuildFolder = path.resolve(__dirname, '.eksamen/build');
@@ -14,19 +15,16 @@ module.exports = {
     publicPath: '/'
   },
   devtool: 'eval-source-map',
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+    }
+  },
   module: {
     rules: [
       {
         test: /\.html$/,
-        loader: 'file-loader',
-        options: {
-          name(file) {
-            if (/index.html$/.test(file)) {
-              return '[name].[ext]';
-            }
-            return '[contenthash].[ext]';
-          },
-        },
+        loader: 'html-loader',
       }, {
         test: /\.vue$/i,
         use: [
@@ -40,7 +38,10 @@ module.exports = {
           'css-loader',
           'postcss-loader',
         ],
-      },
+      }, {
+        test: /\.js$/i,
+        loader: 'babel-loader',
+      }
     ],
   },
   resolve: {
@@ -52,5 +53,9 @@ module.exports = {
     new CleanWebpackPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new VueLoaderPlugin(),
+    new HtmlWebpackPlugin({
+      title: 'App',
+      template: path.resolve(__dirname, 'src/statics/index.html'),
+    }),
   ]
 };

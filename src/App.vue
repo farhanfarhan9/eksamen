@@ -6,16 +6,13 @@
 </template>
 
 <script>
-import './styles/app.css'
-import AppNavbar from './components/pdwia/AppNavbar.vue';
+import Navbar from './components/pdwia/Navbar.vue';
 
 export default {
   name: 'App',
   components: {
-    'app-navbar': AppNavbar
+    'app-navbar': Navbar
   },
-  mounted: function() {
-    console.log(this)
-  }
+  mounted: function() {}
 }
 </script>

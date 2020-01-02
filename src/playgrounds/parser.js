@@ -1,7 +1,7 @@
 const babel = require('@babel/core');
 const parser = require('@babel/parser');
 const traverse = require('@babel/traverse').default;
-const fs = require('fs-extra');
+const fs = require('fs');
 const path = require('path');
 
 const app = fs.readFileSync(path.resolve(__dirname, '../app.js'), 'utf-8');
