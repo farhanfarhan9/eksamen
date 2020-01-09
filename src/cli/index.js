@@ -1,24 +1,8 @@
-require('@babel/register');
-const chokidar = require('chokidar');
-const dotenv = require('dotenv');
-const lodash = require('lodash');
-const path = require('path');
+require('dotenv').config();
 const webpack = require('webpack');
+const bodyParser = require('body-parser');
 const webpackConfig = require('../../webpack.config');
 const WebpackDevServer = require('webpack-dev-server');
-
-// Initialize dotenv config
-dotenv.config();
-
-// Create own file watcher for api routes.
-chokidar.watch(path.resolve(__dirname, '../api/'), {
-  persistent: true,
-  ignoreInitial: true,
-}).on('all', lodash.debounce((event, path) => {
-  console.log("🤔  Detecting changes on API module ...");
-  const serverModule = Object.keys(require.cache).find(item => /api\/index/.test(item));
-  delete require.cache[serverModule];
-}, 1000));
 
 // Initialize compiler object for web app.
 const compiler = webpack(webpackConfig);
@@ -29,10 +13,27 @@ console.log('🏁  CLI App Running at %s...');
 console.log('⚙️   Trying to wake up dev server ...');
 
 const server = new WebpackDevServer(compiler, {
-  before: function(app, server, compiler) {
-    // Middleware for api server. this is for development only.
-    app.use('/api', function(req, res, next) {
-      require('../api/index').default(req, res, next);
+  before: (app, server, compiler) => {
+
+    app.use(bodyParser.json());
+
+    /* Fake Authentication Router */
+    app.post('/api/auth/information', (req, res) => {
+      const authenticated = req.body.authenticated;
+
+      if (authenticated) {
+        res.json({error: false});
+      } else {
+        res.status(401).json({error: true, message: 'Authorization Failed.'});
+      }
+    });
+
+    app.post('/api/auth/login', (req, res) => {
+      if (req.body.password !== 'password') {
+        res.status(401).json({error: true, message: 'Invalid credentials.'});
+      } else {
+        res.json({error: false, message: 'Successfully authenticated.'});
+      }
     });
   },
   contentBase: webpackConfig.output.path,

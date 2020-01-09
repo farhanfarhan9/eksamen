@@ -8,7 +8,7 @@ const webpackBuildFolder = path.resolve(__dirname, '.eksamen/build');
 module.exports = {
   mode: 'development',
   context: path.resolve(__dirname, 'src'),
-  entry: path.resolve(__dirname, 'src/index.js'),
+  entry: path.resolve(__dirname, 'src/client/index.js'),
   output: {
     path: webpackBuildFolder,
     filename: 'bundle.js',
@@ -23,24 +23,18 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.html$/,
-        loader: 'html-loader',
-      }, {
         test: /\.vue$/i,
         use: [
           'vue-loader',
         ],
-      }, {
-        test: /\.css$/i,
+      },
+      {
+        test: /\.css$/,
         use: [
-          'style-loader',
           'vue-style-loader',
           'css-loader',
           'postcss-loader',
-        ],
-      }, {
-        test: /\.js$/i,
-        loader: 'babel-loader',
+        ]
       }
     ],
   },
@@ -54,8 +48,7 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new VueLoaderPlugin(),
     new HtmlWebpackPlugin({
-      title: 'App',
-      template: path.resolve(__dirname, 'src/statics/index.html'),
+      template: path.resolve(__dirname, 'src/client/templates/index.html')
     }),
   ]
 };

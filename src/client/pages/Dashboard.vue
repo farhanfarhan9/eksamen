@@ -1,7 +1,6 @@
 <template>
   <div class="container mx-auto">
-    <h1>Home</h1>
-    <router-link to="/login">Login</router-link>
+    <router-link to="/">Home</router-link>
   </div>
 </template>
 
