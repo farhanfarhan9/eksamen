@@ -2,10 +2,10 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 
 import Home from './pages/Home.vue';
-import Dashboard from './pages/Dashboard.vue';
+import Profile from './pages/Profile.vue';
 import Login from './pages/Login.vue';
-import ExamList from './pages/ExamList.vue';
 
+/* Exam Page */
 import Exam from './pages/Exam/Index.vue';
 import TakeExam from './pages/Exam/Take.vue';
 import FinishExam from './pages/Exam/Finish.vue';
@@ -16,8 +16,7 @@ import store from './store'
 Vue.use(VueRouter);
 
 const routes = [
-  { path: '/dashboard', component: Dashboard },
-  { path: '/exams', component: ExamList },
+  { path: '/profile', component: Profile },
   {
     path: '/exam/:id',
     component: Exam,

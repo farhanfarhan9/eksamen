@@ -25,9 +25,9 @@
 </template>
 
 <script>
+import Swal from 'sweetalert2'
 import Card from '../components/pdwia/Card.vue';
 import Button from '../components/pdwia/Button.vue';
-import Swal from 'sweetalert2'
 
 const Toast = Swal.mixin({
   toast: true,
@@ -52,7 +52,7 @@ export default {
       username: '',
       password: '',
       inputClass: {
-        'block w-full px-2 py-2 bg-gray-100 focus:bg-white border rounded focus:outline-none focus:border-blue-800 leading-tight': true
+        'block w-full px-2 py-2 bg-gray-100 focus:bg-white border rounded focus:outline-none focus:border-pink-500 leading-tight': true
       }
     }
   },

@@ -1,48 +1,68 @@
 <template>
-  <!-- Card -->
-  <div class="bg-white rounded shadow">
-
-    <!-- Card Body -->
-    <div class="px-4 py-2">
-      <h2 class="text-2xl">
-        Review Ujian {{ this.$route.params.id }}
-      </h2>
-      <div>
-        <table>
-          <tbody>
-            <tr>
-              <th>Nama</th>
-              <td>Ujian X</td>
-            </tr>
-            <tr>
-              <th>Dosen</th>
-              <td>Dosen X</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div>
-        <button @click="startExam">
-          Mulai Ujian
-        </button>
-        <button @click="goBack">
-          Kembali
-        </button>
+  <div class="flex justify-center">
+    <!-- Card -->
+    <div class="w-full md:w-8/12 lg:w-6/12 bg-white rounded shadow">
+      <!-- Card Body -->
+      <div class="p-4">
+        <h2 class="text-2xl">
+          Review Ujian {{ exam.name }}
+        </h2>
+        <div>
+          <table>
+            <tbody>
+              <tr>
+                <th>Nama</th>
+                <td>{{ exam.name }}</td>
+              </tr>
+              <tr>
+                <th>Dosen</th>
+                <td>Dosen X</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="flex justify-around -mx-2">
+          <div class="w-6/12 px-2">
+            <button class="w-full p-2 bg-pink-400 text-white border border-pink-400 rounded " @click="startExam">
+              Mulai Ujian
+            </button>
+          </div>
+          <div class="w-6/12 px-2">
+            <button class="w-full p-2 text-pink-600 border border-pink-400 rounded" @click="goBack">
+              Kembali
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import Swal from 'sweetalert2';
+
 export default {
   name: 'ReviewExamPage',
+  mounted: function() {
+    this.exam = this.$store.state.exams.find(item => item.id == this.$route.params.id);
+  },
   methods: {
     startExam: function () {
-      const doExam = confirm('Are you sure ?');
-
-      if (doExam) {
-        this.$router.push('take');
-      }
+      Swal.fire({
+        title: 'Apakah anda yakin untuk mulai?',
+        text: 'Waktu timer akan terus berjalan ketika anda tidak membuka halaman ujian.',
+        icon: 'question',
+        showCancelButton: true,
+        focusConfirm: true,
+        confirmButtonText: 'Ya, mulai',
+        confirmButtonColor: '#F687B3',
+        cancelButtonText: 'Batalkan',
+        allowOutsideClick: false,
+      }).then(({ value }) => {
+        if (value) {
+          this.$router.push('take');
+        }
+      })
 
     },
     goBack: function () {
@@ -51,13 +71,10 @@ export default {
   },
   data() {
     return {
-
+      exam: {}
     }
   }
 };
 </script>
 
-<style>
-  .exams > div {
-  }
-</style>
+<style></style>

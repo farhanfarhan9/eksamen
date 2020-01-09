@@ -5,7 +5,7 @@
     <!-- Card Body -->
     <div class="px-4 py-2">
       <h2 class="text-2xl">
-        Finish Ujian <<{{ this.$route.params.id }}>>
+        Finish Ujian {{ this.$route.params.id }}
       </h2>
 
       <div>
@@ -22,7 +22,7 @@ export default {
   name: 'TakeExamPage',
   methods: {
     pergiKeBeranda: function () {
-      this.$router.push('/dashboard');
+      this.$router.push('/');
     }
   }
 };

@@ -14,7 +14,7 @@ module.exports = {
     filename: 'bundle.js',
     publicPath: '/'
   },
-  devtool: 'eval-source-map',
+  devtool: 'inline-source-map',
   optimization: {
     splitChunks: {
       chunks: 'all',
