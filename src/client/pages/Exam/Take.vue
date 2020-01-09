@@ -67,7 +67,6 @@
 
   </div>
 </template>
-
 <script>
 import Swal from 'sweetalert2';
 
@@ -93,8 +92,8 @@ export default {
   computed: {
     sisawaktu: function() {
       let sisatotal = this.remainTime;
-      let sisamenit = (sisatotal % (24 * 3600 * 3600 )) / 60;
-      let sisadetik = (sisatotal % (24 * 3600 * 3600 * 60)) / 60;
+      let sisamenit = (sisatotal / 60);
+      let sisadetik = (sisatotal % 60);
       let keluar = parseInt(sisamenit) + ' menit ' + parseInt(sisadetik) + ' detik';
       return keluar;
     }
