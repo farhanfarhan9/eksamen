@@ -25,7 +25,7 @@
                 Status
               </div>
               <div>
-                Belum Dikerjakan
+                Belum dikerjakan
               </div>
             </div>
             <div class="mb-1">
@@ -41,7 +41,7 @@
                 Waktu Pengerjaan
               </div>
               <div>
-                30 Menit
+                {{ exam.timeLimit / 60 }} Menit
               </div>
             </div>
             <div class="mb-1">

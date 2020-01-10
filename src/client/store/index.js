@@ -225,7 +225,13 @@ const store = new Vuex.Store({
           },
         ]
       }
-    ]
+    ],
+    status: {
+      totalQuestion: 0,
+      score: 0,
+      filledIn: 0,
+      remainTime: 0,
+    }
   },
   mutations: {
     loggedIn (state, username) {
@@ -236,9 +242,13 @@ const store = new Vuex.Store({
       state.authenticated = false;
       state.username = null;
     },
-    takeExam(state, exam) {
-      state.examStatus.examId = exam.id
-      state.examStatus.status = 'active'
+    finishExam(state, exam) {
+      Object.assign(state.status, {
+        totalQuestion: exam.total,
+        score: exam.score,
+        filledIn: exam.filledIn,
+        remainTime: exam.remainTime
+      })
     },
   }
 });

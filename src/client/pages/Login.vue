@@ -1,26 +1,28 @@
 <template>
-  <div class="mt-5 container mx-auto flex justify-center p-4">
-    <Card class="w-full lg:w-3/6">
-      <h1 class="text-2xl">Login</h1>
-      <div>
-        <form v-on:submit.prevent="login">
-          <div class="mb-2.1">
-            <label class="block text-gray-700 mb-1" for="username">Nama pengguna</label>
-            <input :class="inputClass" v-model="username" id="username" type="text">
-          </div>
-          <div class="mb-2">
-            <label class="block text-gray-700 mb-1" for="password">Kata sandi</label>
-            <input :class="inputClass" v-model="password" id="password" type="password">
-          </div>
-          <div>
-            <Button class="w-full" type="primary" @click="login">
-              Masuk
-            </Button>
-          </div>
-        </form>
-      </div>
-    </Card>
-    <!-- </div> -->
+  <div style="min-height: 75vh;">
+    <div class="mt-5 container mx-auto flex justify-center p-4">
+      <Card class="w-full lg:w-3/6">
+        <h1 class="text-2xl">Login</h1>
+        <div>
+          <form v-on:submit.prevent="login">
+            <div class="mb-2.1">
+              <label class="block text-gray-700 mb-1" for="username">Nama pengguna</label>
+              <input :class="inputClass" v-model="username" id="username" type="text">
+            </div>
+            <div class="mb-2">
+              <label class="block text-gray-700 mb-1" for="password">Kata sandi</label>
+              <input :class="inputClass" v-model="password" id="password" type="password">
+            </div>
+            <div>
+              <Button class="w-full" type="primary" @click="login">
+                Masuk
+              </Button>
+            </div>
+          </form>
+        </div>
+      </Card>
+      <!-- </div> -->
+    </div>
   </div>
 </template>
 

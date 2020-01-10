@@ -135,9 +135,16 @@ export default {
           }
         }, 0);
 
+        const filledIn = this.exam.questions.filter(item => item.selectedAnswer !== -1).length;
+
         if (value) {
-          this.exam = {};
-          this.remainTime = 0;
+          this.$store.commit('finishExam', {
+            total:this.exam.questions.length,
+            score: totalNilai,
+            filledIn: filledIn,
+            remainTime: this.remainTime,
+          });
+
           this.$router.replace('finish');
         }
       })

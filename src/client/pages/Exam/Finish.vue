@@ -8,27 +8,23 @@
       <h2 class="text-2xl">
         Finish Ujian Bahasa Inggris
       </h2>
-       <div class="mx-8">
-          <table>
-            <tbody>
-              <tr>
-                <th class="py-5 text-left px-20">Jumlah Soal : </th>
-                <td class="py-5">X</td>
-              </tr>
-              <tr>
-                <th class="text-left px-20">Jumlah Soal Yang Dikerjakan : </th>
-                <td class="text-right">X</td>
-              </tr>
-              <tr>
-                <th class="py-5 text-left px-20">Sisa Waktu : </th>
-                <td class="py-5 text-right">X</td>
-              </tr>
-              <tr>
-                <th class="text-left px-20">Total Score : </th>
-                <td>X</td>
-              </tr>
-            </tbody>
-          </table>
+       <div class="flex flex-col">
+        <div>
+          <p class="font-semibold">Jumlah Soal : </p>
+          <td>{{ this.$store.state.status.totalQuestion }}</td>
+        </div>
+        <div>
+          <p class="font-semibold">Jumlah Soal Yang Dikerjakan : </p>
+          <td>{{ this.$store.state.status.filledIn }}</td>
+        </div>
+        <div>
+          <p class="font-semibold">Sisa Waktu : </p>
+          <td>{{ parseInt(this.$store.state.status.remainTime / 60 )}} Menit</td>
+        </div>
+        <div>
+          <p class="font-semibold">Total Score : </p>
+          <td>{{ this.$store.state.status.score }}</td>
+        </div>
         </div>
       <div>
         <button @click="pergiKeBeranda" class="w-full p-2 bg-pink-400 text-white border border-pink-400 rounded mt-8">
