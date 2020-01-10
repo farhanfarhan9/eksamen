@@ -8,18 +8,16 @@
           Review Ujian {{ exam.name }}
         </h2>
         <div class="mt-4">
-          <table class="table-auto">
-            <tbody>
-              <tr>
-                <th>Nama  : </th>
-                <td>{{ exam.name }}</td>
-              </tr>
-              <tr>
-                <th>Dosen : </th>
-                <td>Dosen X</td>
-              </tr>
-            </tbody>
-          </table>
+          <div class="table w-full">
+            <div class="table-row">
+              <div class="table-cell font-medium bg-pink-300 px-4 py-2 border border-pink-400">Mata Ujian</div>
+              <div class="table-cell font-medium bg-pink-300 px-4 py-2 border border-pink-400">Dosen</div>
+            </div>
+            <div class="table-row">
+              <div class="table-cell px-4 py-2 border border-pink-400">{{exam.name}}</div>
+              <div class="table-cell px-4 py-2 border border-pink-400">Endavor</div>
+            </div>
+          </div>
         </div>
         <div class="flex justify-around -mx-2 mt-4">
           <div class="w-6/12 px-2">
