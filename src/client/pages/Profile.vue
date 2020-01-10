@@ -50,8 +50,9 @@ export default {
     Button
   },
   methods:{
-    logout: function(){
-      this.$router.push('./login')
+    logout: function () {
+      this.$store.commit('loggedOut');
+      this.$router.push('./login');
     } 
 
   },

@@ -60,7 +60,7 @@ export default {
         allowOutsideClick: false,
       }).then(({ value }) => {
         if (value) {
-          this.$router.push('take');
+          this.$router.replace('take');
         }
       })
 

@@ -232,6 +232,10 @@ const store = new Vuex.Store({
       state.authenticated = true;
       state.username = username;
     },
+    loggedOut (state) {
+      state.authenticated = false;
+      state.username = null;
+    },
     takeExam(state, exam) {
       state.examStatus.examId = exam.id
       state.examStatus.status = 'active'

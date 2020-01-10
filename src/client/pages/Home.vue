@@ -25,7 +25,7 @@
                 Status
               </div>
               <div>
-                Belum Mulai
+                Belum Dikerjakan
               </div>
             </div>
             <div class="mb-1">
@@ -33,7 +33,7 @@
                 Jumlah Soal
               </div>
               <div>
-                20 Soal
+                {{ exam.questions.length }} Soal
               </div>
             </div>
             <div class="mb-1">

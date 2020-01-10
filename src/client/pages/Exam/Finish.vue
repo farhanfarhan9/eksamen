@@ -10,7 +10,7 @@
       </h2>
        <div class="mx-8">
           <table>
-            <tbody >
+            <tbody>
               <tr>
                 <th class="py-5 text-left px-20">Jumlah Soal : </th>
                 <td class="py-5">X</td>

@@ -72,9 +72,11 @@ import Swal from 'sweetalert2';
 
 export default {
   name: 'TakeExamPage',
+  beforeRouteLeave (to, from, next) {
+    next();
+  },
   mounted: function() {
     this.exam = this.$store.state.exams.find(item => item.id == this.$route.params.id);
-
     setInterval(() => {
       this.remainTime = this.remainTime - 1;
     }, 1000);
@@ -90,12 +92,18 @@ export default {
     }
   },
   computed: {
-    sisawaktu: function() {
+    sisawaktu: function () {
       let sisatotal = this.remainTime;
       let sisamenit = (sisatotal / 60);
       let sisadetik = (sisatotal % 60);
       let keluar = parseInt(sisamenit) + ' menit ' + parseInt(sisadetik) + ' detik';
       return keluar;
+    },
+    answeredQuestion: function () {
+      return this.exam.questions.filter(item => item.selectedAnswer !== -1).length;
+    },
+    totalQuestion: function () {
+      return this.exam.questions.length;
     }
   },
   methods: {
@@ -109,7 +117,7 @@ export default {
     submit: function () {
       Swal.fire({
         title: 'Apakah anda yakin menyelesaikan?',
-        text: 'Anda telah menjawab sebanyak x / x total pertanyaan.',
+        text: 'Anda telah menjawab sebanyak ' + this.answeredQuestion +' / ' + this.totalQuestion + ' total pertanyaan.',
         icon: 'question',
         showCancelButton: true,
         focusConfirm: false,
@@ -118,8 +126,19 @@ export default {
         cancelButtonText: 'Batalkan',
         allowOutsideClick: true,
       }).then(({ value }) => {
+
+        const totalNilai = this.exam.questions.reduce((total, current) => {
+          if (current.selectedAnswer == current.correctAswer) {
+            return total + 1;
+          } else {
+            return total + 0;
+          }
+        }, 0);
+
         if (value) {
-          this.$router.push('finish');
+          this.exam = {};
+          this.remainTime = 0;
+          this.$router.replace('finish');
         }
       })
     }
