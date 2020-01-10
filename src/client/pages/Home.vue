@@ -57,15 +57,6 @@
       </div>
     </div>
 
-    <div id="pagination" class="flex justify-center">
-      <nav class="flex justify-around w-full md:w-6/12 bg-white shadow rounded">
-        <button class="p-2">prev</button>
-        <p class="p-2">
-          1 / 5
-        </p>
-        <button class="p-2">next</button>
-      </nav>
-    </div>
   </Container>
 </template>
 

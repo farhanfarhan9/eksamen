@@ -4,8 +4,8 @@
     <!-- Card -->
     <div class="sticky top-0 w-full lg:w-10/12 bg-white rounded shadow mb-5">
       <!-- Card Body -->
-      <div v-if="expandDetails" class="p-4 flex flex-col justify-around items-start">
-        <div class="mb-2">
+      <div v-if="expandDetails" class="p-4 flex flex-col md:flex-row justify-around items-start">
+        <div class="mb-2 w-full md:w-6/12">
           <p>
             <span class="font-semibold">Ujian:</span> {{ exam.name }}
           </p>
@@ -19,10 +19,10 @@
             <span class="font-semibold">Waktu Tersisa:</span> {{ sisawaktu }}
           </p>
         </div>
-        <div class="flex justify-around w-full">
+        <div class="flex justify-center flex-row md:flex-col w-full md:w-6/12">
           <button
             @click="submit"
-            class="p-2 bg-pink-400 text-white rounded border border-pink-400 shadow"
+            class="mr-5 md:mr-0 md:mb-5 p-2 bg-pink-400 text-white rounded border border-pink-400 shadow"
           >
             Selesai Ujian
           </button>
@@ -47,7 +47,7 @@
       <!-- Card Body -->
       <div class="p-4">
         <div class="mb-2">
-          <span class="font-semibold">Soal:</span> {{ question.text }}
+          <span class="font-semibold">Soal:</span> <span class="question__text">{{ question.text }}</span>
         </div>
         <div>
           <span class="block font-semibold mb-2">Jawaban:</span>
@@ -55,7 +55,7 @@
             <li class="mb-2" v-for="answer in question.answers" v-bind:key="answer.id">
               <button
               @click="answerQuestion(questionIndex, answer.id)"
-              class="block w-full md:w-6/12 p-2 border border-pink-400 rounded text-left"
+              class="answer__text block w-full md:w-6/12 p-2 border border-pink-400 rounded text-left"
               :class="{'bg-pink-400 text-white': question.selectedAnswer == answer.id}">
                 {{ answer.text }}
               </button>
@@ -127,4 +127,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.question__text, .answer__text {
+  font-family: 'Noto Serif', serif;
+}
+</style>

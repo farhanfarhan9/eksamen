@@ -1,5 +1,5 @@
 <template>
-  <div class="container mx-auto">
+  <div class="container mx-auto" style="min-height: 78vh">
     <slot></slot>
   </div>
 </template>

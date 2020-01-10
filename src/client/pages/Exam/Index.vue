@@ -1,5 +1,5 @@
 <template>
-  <Container class="p-4 lg:p-0 lg:my-10" style="min-height: 78vh">
+  <Container class="p-4 lg:p-0 lg:my-10">
     <router-view></router-view>
   </Container>
 </template>
