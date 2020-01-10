@@ -24,7 +24,7 @@
             @click="submit"
             class="mr-5 md:mr-0 md:mb-5 p-2 bg-pink-400 text-white rounded border border-pink-400 shadow"
           >
-            Selesai Ujian
+            Selesai Ujian 
           </button>
           <button
             @click="expandDetails = false"
