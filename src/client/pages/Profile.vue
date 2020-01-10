@@ -13,23 +13,23 @@
               <th class="text-left border px-4 py-2">Nama Lengkap :</th>
               <td class="border px-4 py-2">Aditya Raka</td>
             </tr>
-            <tr class="bg-gray-100">
-              <th class="text-left border px-4 py-2">NIS          :</th>
+            <tr>
+              <th class="text-left border px-4 py-2">NIS :</th>
               <td class="border px-4 py-2">65534</td>
             </tr>
             <tr>
-              <th class="text-left border px-4 py-2">Kelas        :</th>
+              <th class="text-left border px-4 py-2">Kelas :</th>
               <td class="border px-4 py-2">XII-A</td>
             </tr>
             <tr>
-              <th class="text-left border px-4 py-2">Jurusan      :</th>
+              <th class="text-left border px-4 py-2">Jurusan :</th>
               <td class="border px-4 py-2">IPA</td>
             </tr>
           </tbody>
         </table>
         </div>
         <div >
-          <Button v-on:click="logout">Keluar</Button>
+          <Button v-on:click.native="logout">Keluar</Button>
         </div>
       </div>
     </Card>
@@ -51,7 +51,7 @@ export default {
   },
   methods:{
     logout: function(){
-      this.$router.push('/login')
+      this.$router.push('./login')
     } 
 
   },

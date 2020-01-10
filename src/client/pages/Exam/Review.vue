@@ -7,21 +7,21 @@
         <h2 class="text-2xl">
           Review Ujian {{ exam.name }}
         </h2>
-        <div>
-          <table>
+        <div class="mt-4">
+          <table class="table-auto">
             <tbody>
               <tr>
-                <th>Nama</th>
+                <th>Nama  : </th>
                 <td>{{ exam.name }}</td>
               </tr>
               <tr>
-                <th>Dosen</th>
+                <th>Dosen : </th>
                 <td>Dosen X</td>
               </tr>
             </tbody>
           </table>
         </div>
-        <div class="flex justify-around -mx-2">
+        <div class="flex justify-around -mx-2 mt-4">
           <div class="w-6/12 px-2">
             <button class="w-full p-2 bg-pink-400 text-white border border-pink-400 rounded " @click="startExam">
               Mulai Ujian
