@@ -3,6 +3,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const webpack = require('webpack');
+
 const webpackBuildFolder = path.resolve(__dirname, '.eksamen/build');
 
 module.exports = {
@@ -38,17 +39,12 @@ module.exports = {
       }
     ],
   },
-  resolve: {
-    alias: {
-      'vue$': 'vue/dist/vue.esm.js'
-    }
-  },
   plugins: [
     new CleanWebpackPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new VueLoaderPlugin(),
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, 'src/client/templates/index.html')
+      template: path.resolve(__dirname, 'src/client/templates/index.ejs')
     }),
   ]
 };

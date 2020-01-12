@@ -1,14 +1,5 @@
 # eksamen 👨‍💻
-
-Make your students love exam again.
-
-Aplikasi ujian berbasis komputer dengan Vue dan Express.
-
-## Struktur *folder*
-
-TODO
-
-## Development
+Aplikasi ujian dengan Vue dan Express.
 
 Install dependensi yang diperlukan terlebih dahulu
 ```
