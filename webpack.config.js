@@ -9,7 +9,7 @@ const webpackBuildFolder = path.resolve(__dirname, '.eksamen/build');
 module.exports = {
   mode: 'development',
   context: path.resolve(__dirname, 'src'),
-  entry: path.resolve(__dirname, 'src/client/index.js'),
+  entry: path.resolve(__dirname, 'src/frontend/index.js'),
   output: {
     path: webpackBuildFolder,
     filename: 'bundle.js',
@@ -44,7 +44,7 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new VueLoaderPlugin(),
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, 'src/client/templates/index.ejs')
+      template: path.resolve(__dirname, 'src/frontend/templates/index.ejs')
     }),
   ]
 };

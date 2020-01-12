@@ -14,8 +14,3 @@ export default {
 }
 </script>
 
-<style>
-  .alert {
-    @apply absolute bg-blue-600;
-  }
-</style>

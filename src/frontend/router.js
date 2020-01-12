@@ -4,8 +4,6 @@ import VueRouter from 'vue-router';
 import Home from './pages/Home.vue';
 import Profile from './pages/Profile.vue';
 import Login from './pages/Login.vue';
-
-/* Exam Page */
 import Exam from './pages/Exam/Index.vue';
 import TakeExam from './pages/Exam/Take.vue';
 import FinishExam from './pages/Exam/Finish.vue';
@@ -43,7 +41,7 @@ const routes = [
     path: '/',
     component: Home,
     meta: { requiredAuthentication: true },
-    
+
   },
 ];
 
@@ -51,8 +49,6 @@ const router = new VueRouter({ routes });
 
 router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.requiredAuthentication)) {
-    // this route requires auth, check if logged in
-    // if not, redirect to login page.
     fetch('/api/auth/information', {
       method: 'POST',
       headers: {
@@ -68,7 +64,7 @@ router.beforeEach((to, from, next) => {
           next();
       })
   } else {
-    next() // make sure to always call next()!
+    next();
   }
 })
 

@@ -1,7 +1,6 @@
 require('dotenv').config();
-const http = require('http');
 const webpack = require('webpack');
-const webpackConfig = require('../../webpack.config');
+const webpackConfig = require('../webpack.config');
 const WebpackDevServer = require('webpack-dev-server');
 
 // Initialize compiler object for web app.

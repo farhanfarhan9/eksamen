@@ -1,7 +1,7 @@
 require('dotenv').config();
 
 const http = require('http');
-const app = require('../server');
+const app = require('../src/backend');
 
 const server = http.createServer(app);
 
